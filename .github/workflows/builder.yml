@@ -1,6 +1,9 @@
 name: Build the game
 run-name: ${{ github.actor }} has triggered a new build
-on: [push]
+on:
+  push:
+    branches:
+      - main
 jobs:
   BuildTheGame:
     name: Build the game for Windows
