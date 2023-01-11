@@ -36,7 +36,4 @@ jobs:
       - uses: softprops/action-gh-release@v1
         with:
           tag_name: v1.0
-          files: |
-            build
-            Build
-            "Name Goes Here"
+          files: StandaloneWindows64/*
