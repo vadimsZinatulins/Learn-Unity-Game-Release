@@ -15,9 +15,9 @@ jobs:
           lfs: true
       - uses: actions/cache@v2
         with:
-          path: StandaloneWindows64
-          key: Library-MyProjectName-TargetPlatform
-          restore-keys: Library-MyProjectName-TargetPlatform
+          path: Library
+          key: Library
+          restore-keys: Library
       - uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -35,4 +35,4 @@ jobs:
           path: StandaloneWindows64
       - uses: softprops/action-gh-release@v1
         with:
-          tag_name: v1.0
+          tag_name: v1.0.0
