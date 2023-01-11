@@ -19,21 +19,9 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: StandaloneWindows64
-          build-path: ${{ env.GITHUB_WORKSPACE }}/Builds/Windows
-          project-path: ${{ env.GITHUB_WORKSPACE }}
           buildName: TheGame
-      - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
       - name: Upload build
         uses: actions/upload-artifact@v2
         with:
-          name: WindowsBuild
-          path: Builds/Windows
+          name: Build-StandaloneWindows64
+          path: build/StandaloneWindows64 
