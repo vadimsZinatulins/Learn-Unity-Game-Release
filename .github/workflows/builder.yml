@@ -18,17 +18,10 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          platform: 'Windows'
-          unityVersion: auto
-          build-path: 'Builds/Windows'
-          project-path: '${{ env.GITHUB_WORKSPACE }}'
+          target: Windows
+          build-path: ${{ env.GITHUB_WORKSPACE }}/Builds/Windows
+          project-path: ${{ env.GITHUB_WORKSPACE }}
           buildName: TheGame
-  release:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
@@ -42,5 +35,5 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v2
         with:
-          name: Builds
-          path: Builds
+          name: WindowsBuild
+          path: Builds/Windows
