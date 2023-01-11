@@ -18,7 +18,7 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          target: Windows
+          targetPlatform: StandaloneWindows64
           build-path: ${{ env.GITHUB_WORKSPACE }}/Builds/Windows
           project-path: ${{ env.GITHUB_WORKSPACE }}
           buildName: TheGame
