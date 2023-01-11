@@ -28,11 +28,14 @@ jobs:
           unityVersion: auto
           versioning: Semantic
           tag: v1.0
-          buildName: "Name Goes Here"
+          buildName: TheGame
+          buildsPath: WindowsBuild
+          projectPath: Builds
       - uses: actions/upload-artifact@v2
         with:
-          name: "Name Goes Here"
-          path: StandaloneWindows64
+          name: Build
+          path: build
       - uses: softprops/action-gh-release@v1
         with:
           tag_name: v1.0.0
+          files: Builds/WindowsBuild/TheGame
