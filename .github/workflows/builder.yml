@@ -28,6 +28,7 @@ jobs:
   release:
     name: Release the game
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
