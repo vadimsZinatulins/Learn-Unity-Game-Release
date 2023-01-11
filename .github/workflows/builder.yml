@@ -26,6 +26,8 @@ jobs:
         with:
           targetPlatform: StandaloneWindows64
           unityVersion: auto
+          versioning: Semantic
+          tag: v1.0
           buildName: "Name Goes Here"
       - uses: actions/upload-artifact@v2
         with:
@@ -33,7 +35,7 @@ jobs:
           path: build
       - uses: softprops/action-gh-release@v1
         with:
-          tag_name: v1.0.0
+          tag_name: v1.0
           files: |
             build
             Build
