@@ -23,8 +23,8 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v2
         with:
-          name: Build-StandaloneWindows64
-          path: build/StandaloneWindows64 
+          name: Build
+          path: ${{ github.workspace }} 
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -39,6 +39,6 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: Build-StandaloneWindows64
+          asset_path: Build
           asset_name: Game
           asset_content_type: application/zip
