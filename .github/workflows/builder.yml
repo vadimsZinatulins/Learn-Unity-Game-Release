@@ -29,8 +29,6 @@ jobs:
           versioning: Semantic
           tag: v1.0
           buildName: TheGame
-          buildsPath: WindowsBuild
-          projectPath: Builds
       - uses: actions/upload-artifact@v2
         with:
           name: Build
@@ -38,4 +36,6 @@ jobs:
       - uses: softprops/action-gh-release@v1
         with:
           tag_name: v1.0.0
-          files: Builds/WindowsBuild/TheGame
+          files: | 
+            TheGame.exe
+            TheGame
