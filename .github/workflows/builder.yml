@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   build:
-    name: Build the game for Windows
+    name: Build the game
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -35,7 +35,11 @@ jobs:
           directory: ./build/${{ matrix.targetPlatform }}
           type: zip
           filename: ${{ github.workspace }}/TheGame-${{ matrix.targetPlatform }}.zip
-      - run: ls -R
+
+  release:
+    name: Release the game
+    runs-on: ubuntu-latest
+    steps:
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -46,14 +50,21 @@ jobs:
           release_name: Release v1.0.0
           draft: false
           prerelease: false
-      - run: ls -R
-      - name: Upload release asset
+      - name: Upload release asset Windows
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./TheGame-${{ matrix.targetPlatform }}.zip
-          asset_name: TheGame-${{ matrix.targetPlatform }}.zip
+          asset_path: ./TheGame-StandaloneWindows64.zip
+          asset_name: TheGame-StandaloneWindows64.zip
           asset_content_type: application/zip
-      - run: ls -R
+      - name: Upload release asset Linux
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./TheGame-StandaloneLinux64.zip
+          asset_name: TheGame-StandaloneLinux64.zip
+          asset_content_type: application/zip
