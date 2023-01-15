@@ -32,9 +32,9 @@ jobs:
       - name: Archive Release
         uses: thedoctor0/zip-release@main
         with:
-          directory: TheGame/build/${{ matrix.targetPlatform }}
+          directory: ./build/${{ matrix.targetPlatform }}
           type: zip
-          filename: ${{ matrix.targetPlatform }}.zip
+          filename: TheGame-${{ matrix.targetPlatform }}.zip
       - run: ls -R
       - name: Create Release
         id: create_release
@@ -53,7 +53,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./${{ matrix.targetPlatform }}.zip
-          asset_name: ${{ matrix.targetPlatform }}.zip
+          asset_path: ./TheGame-${{ matrix.targetPlatform }}.zip
+          asset_name: TheGame-${{ matrix.targetPlatform }}.zip
           asset_content_type: application/zip
       - run: ls -R
