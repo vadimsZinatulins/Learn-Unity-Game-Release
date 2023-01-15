@@ -48,4 +48,43 @@ jobs:
         with:
           name: TheGame-StandaloneLinux64
           path: TheGame-StandaloneLinux64
-      - run: ls -R
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: Release-${{ github.run_number }}
+          release_name: Release v1.0.0
+          draft: false
+          prerelease: false
+      - name: Archive Windows Release
+        uses: thedoctor0/zip-release@main
+        with:
+          directory: TheGame-StandaloneWindows64
+          type: zip
+          filename: StandaloneWindows64.zip      
+      - name: Archive Linux Release
+        uses: thedoctor0/zip-release@main
+        with:
+          directory: TheGame-StandaloneLinux64
+          type: zip
+          filename: StandaloneLinux64.zip
+      - uses: actions/upload-release-asset@v1
+        name: Upload Windows Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./StandaloneWindows64.zip
+          asset_name: StandaloneWindows64.zip
+          asset_content_type: application/zip
+      - uses: actions/upload-release-asset@v1
+        name: Upload Linux Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./StandaloneLinux64.zip
+          asset_name: StandaloneLinux64.zip
+          asset_content_type: application/zip
