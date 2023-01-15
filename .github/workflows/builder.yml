@@ -27,18 +27,12 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           buildName: TheGame-${{ matrix.targetPlatform }}
           projectPath: TheGame
-      - name: Archive Release
-        uses: thedoctor0/zip-release@main
-        with:
-          directory: ./build/${{ matrix.targetPlatform }}
-          type: zip
-          filename: ${{ github.workspace }}/TheGame-${{ matrix.targetPlatform }}.zip
       - run: ls -R
       - name: Upload release asset ${{ matrix.targetPlatform }}
         uses: actions/upload-artifact@v3
         with:
           name: TheGame-${{ matrix.targetPlatform }}
-          path: TheGame-${{ matrix.targetPlatform }}
+          path: build/TheGame-${{ matrix.targetPlatform }}
 
   release:
     name: Release the game
