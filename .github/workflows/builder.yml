@@ -34,7 +34,7 @@ jobs:
         with:
           directory: ./build/${{ matrix.targetPlatform }}
           type: zip
-          filename: TheGame-${{ matrix.targetPlatform }}.zip
+          filename: ${{ github.workspace }}/TheGame-${{ matrix.targetPlatform }}.zip
       - run: ls -R
       - name: Create Release
         id: create_release
