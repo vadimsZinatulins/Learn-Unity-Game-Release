@@ -30,7 +30,7 @@ jobs:
       - name: Archive Release
         uses: thedoctor0/zip-release@main
         with:
-          directory: "The Game/build/${{ matrix.targetPlatform }}/"
+          directory: "The Game/build/${{ matrix.targetPlatform }}"
           type: zip
           filename: ${{ matrix.targetPlatform }}.zip
       - name: Create Release
