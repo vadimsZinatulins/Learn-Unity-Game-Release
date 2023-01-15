@@ -36,6 +36,6 @@ jobs:
       - name: Upload release asset ${{ matrix.targetPlatform }}
         uses: actions/upload-artifact@v3
         with:
-          name: artifacts/${{ matrix.targetPlatform }}
-          path: ./TheGame-${{ matrix.targetPlatform }}.zip
+          name: ./TheGame-${{ matrix.targetPlatform }}.zip
+          path: ./TheGame-${{ matrix.targetPlatform }}
 
