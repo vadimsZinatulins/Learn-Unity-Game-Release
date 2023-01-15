@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: TheGame-${{ matrix.targetPlatform }}
-          path: build/TheGame-${{ matrix.targetPlatform }}
+          path: ./build/${{ matrix.targetPlatform }}
 
   release:
     name: Release the game
