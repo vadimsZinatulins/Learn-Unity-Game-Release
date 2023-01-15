@@ -27,7 +27,6 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           buildName: TheGame-${{ matrix.targetPlatform }}
           projectPath: TheGame
-      - run: ls -R
       - name: Upload release asset ${{ matrix.targetPlatform }}
         uses: actions/upload-artifact@v3
         with:
@@ -70,6 +69,7 @@ jobs:
           directory: TheGame-StandaloneLinux64
           type: zip
           filename: StandaloneLinux64.zip
+      - run: ls -R
       - uses: actions/upload-release-asset@v1
         name: Upload Windows Release
         env:
