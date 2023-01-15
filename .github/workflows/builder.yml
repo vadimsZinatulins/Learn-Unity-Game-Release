@@ -26,6 +26,7 @@ jobs:
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
           buildName: TheGame-${{ matrix.targetPlatform }}
+          projectPath: "The Game"
       - name: Archive Release
         uses: thedoctor0/zip-release@main
         with:
