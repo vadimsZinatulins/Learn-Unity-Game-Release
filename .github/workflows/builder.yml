@@ -37,6 +37,7 @@ jobs:
       - name: Archive Release
         uses: thedoctor0/zip-release@main
         with:
+          directory: build/StandaloneWindows64/
           type: zip
           filename: build.zip
       - name: Create Release
@@ -56,5 +57,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./build.zip
-          asset_name: Game
+          asset_name: Game.zip
           asset_content_type: application/zip
